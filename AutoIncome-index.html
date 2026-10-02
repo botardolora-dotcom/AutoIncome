@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AutoIncome — plataforma para automatizar tareas de monetización digital.">
+  <title>AutoIncome — Ingresos en piloto automático</title>
+  <style>
+    :root{--bg:#071427;--bg2:#0b1d35;--card:#102640;--text:#f5f8ff;--muted:#a9b8cc;--blue:#4774ff;--cyan:#4ee7c1;--purple:#8d68ff;--line:rgba(255,255,255,.1);--light:#f5f8fc;--ink:#10233d}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.5}
+    a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;background:rgba(7,20,39,.88);backdrop-filter:blur(16px)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px}.bot{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#dce8ff);color:#172a45;font-size:21px}
+    .brand span{color:#5c83ff}.navlinks{display:flex;gap:28px;color:#d6deea;font-size:14px}.navlinks a:hover{color:white}
+    .actions{display:flex;gap:10px}.btn{border:0;border-radius:14px;padding:13px 19px;font-weight:800;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}.btn:hover{transform:translateY(-2px)}.btn-outline{background:transparent;color:#fff;border:1px solid #73819a}.btn-main{background:linear-gradient(100deg,#4b72ff,#4de3bf);color:white;box-shadow:0 10px 35px rgba(65,113,255,.25)}
+    .hero{overflow:hidden;background:radial-gradient(circle at 85% 25%,rgba(66,110,255,.24),transparent 30%),radial-gradient(circle at 70% 70%,rgba(68,229,190,.1),transparent 25%);padding:72px 0 82px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}.pill{display:inline-flex;gap:8px;padding:8px 13px;border-radius:99px;background:rgba(58,215,175,.13);color:#7cf1cf;font-weight:800;font-size:13px}
+    h1{font-size:clamp(44px,6vw,72px);line-height:1.02;letter-spacing:-3px;margin:18px 0}.grad{background:linear-gradient(90deg,#8b69ff,#4de4c0);-webkit-background-clip:text;color:transparent}
+    .lead{font-size:18px;color:#c1ccda;max-width:650px}.hero-buttons{display:flex;gap:12px;margin:28px 0}.trust{display:flex;gap:25px;flex-wrap:wrap;color:#b7c5d6;font-size:13px}
+    .dashboard{background:rgba(255,255,255,.96);color:var(--ink);border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:20px;box-shadow:0 35px 80px rgba(0,0,0,.35);transform:rotate(1deg)}
+    .dash-top{display:flex;justify-content:space-between;align-items:center}.dash-top small{color:#708096}.status{font-size:11px;color:#198b69;background:#dcfaef;padding:7px 10px;border-radius:99px;font-weight:800}
+    .money{font-size:36px;font-weight:900;margin:8px 0}.up{color:#159b70;font-weight:800;font-size:13px}.chart{height:130px;margin:15px 0;border-bottom:1px solid #dbe3ed;position:relative;overflow:hidden}.chart svg{width:100%;height:100%}
+    .dash-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{padding:14px;background:#f3f6fa;border-radius:13px}.mini small{color:#78879a}.mini strong{display:block;font-size:19px;margin-top:4px}
+    section{padding:85px 0}.light{background:var(--light);color:var(--ink)}.center{text-align:center}.eyebrow{color:#5277e9;font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:1px}.section-title{font-size:40px;line-height:1.1;margin:10px 0}.section-sub{color:#687a91;max-width:680px;margin:0 auto 42px}
+    .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}.card{background:white;border:1px solid #e6ebf2;border-radius:18px;padding:24px;box-shadow:0 10px 25px rgba(30,55,90,.05)}.icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:#edf3ff;font-size:21px;margin-bottom:18px}.card h3{font-size:16px;margin:0 0 7px}.card p{color:#708096;font-size:14px;margin:0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:25px}.step{text-align:center;position:relative}.num{margin:0 auto 14px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#4e74ff;color:white;font-weight:900}.step h3{margin:0 0 6px}.step p{color:#72839a;font-size:14px}
+    .calculator{background:linear-gradient(135deg,#0c2039,#132f52);border-radius:26px;padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}.calculator h2{font-size:38px;margin:0 0 12px}.calculator p{color:#b5c4d7}.calc-box{background:white;color:var(--ink);border-radius:18px;padding:25px}.field{margin-bottom:18px}.field label{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:8px}.field input{width:100%;accent-color:#4e74ff}.result{padding:18px;border-radius:14px;background:#edf8f5}.result strong{font-size:30px;color:#159b70;display:block}
+    .cta{padding:30px 0;background:linear-gradient(90deg,#0c2441,#12465a)}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.cta h2{margin:0;font-size:27px}.cta p{margin:4px 0;color:#b7cad8}
+    footer{padding:42px 0 25px;background:#061223;border-top:1px solid var(--line)}.foot{display:flex;justify-content:space-between;gap:25px}.foot p,.foot a{color:#899ab0;font-size:13px}.footlinks{display:flex;gap:22px}.copy{text-align:center;color:#667990;font-size:12px;margin-top:35px}
+    .modal{position:fixed;inset:0;background:rgba(2,8,18,.7);display:none;place-items:center;z-index:50;padding:20px}.modal.open{display:grid}.modal-box{background:white;color:var(--ink);border-radius:20px;padding:28px;max-width:420px;width:100%;position:relative}.close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:25px;cursor:pointer}.modal-box input{width:100%;padding:13px;margin:7px 0 14px;border:1px solid #dbe2ea;border-radius:10px}.note{font-size:12px;color:#78879a}
+    @media(max-width:900px){.navlinks{display:none}.hero-grid,.calculator{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.dashboard{transform:none}}
+    @media(max-width:560px){.actions .btn-outline{display:none}.hero{padding-top:45px}h1{letter-spacing:-2px}.hero-buttons{flex-direction:column}.cards,.steps{grid-template-columns:1fr}.calculator{padding:25px}.cta-inner,.foot{flex-direction:column;align-items:flex-start}.section-title{font-size:32px}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+      <a class="brand" href="#"><div class="bot">🤖</div>Auto<span>Income</span></a>
+      <div class="navlinks"><a href="#inicio">Inicio</a><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a href="#calculadora">Calculadora</a><a href="#planes">Planes</a><a href="#faq">FAQ</a></div>
+      <div class="actions"><button class="btn btn-outline" onclick="openModal('login')">Iniciar sesión</button><button class="btn btn-main" onclick="openModal('register')">Registrarse</button></div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">⚡ Automatiza · Optimiza · Crece</span>
+          <h1>Genera ingresos<br>en <span class="grad">piloto automático</span></h1>
+          <p class="lead">Una plataforma para centralizar tareas de monetización digital, automatizar procesos y controlar tus resultados desde un solo lugar.</p>
+          <div class="hero-buttons"><button class="btn btn-main" onclick="openModal('register')">Comienza ahora →</button><a class="btn btn-outline" href="#como">Ver cómo funciona</a></div>
+          <div class="trust"><span>✓ Sin conocimientos técnicos</span><span>⚙ Automatizaciones</span><span>🌍 Desde cualquier lugar</span></div>
+        </div>
+        <div class="dashboard">
+          <div class="dash-top"><div><small>Panel de demostración</small><div class="money">€152,43</div><span class="up">↗ +12,5% esta semana</span></div><span class="status">● SISTEMA ACTIVO</span></div>
+          <div class="chart"><svg viewBox="0 0 500 130" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4ee7c1" stop-opacity=".35"/><stop offset="1" stop-color="#4ee7c1" stop-opacity="0"/></linearGradient></defs><path d="M0 105 C55 95 65 104 100 83 S155 93 190 62 S240 75 275 54 S325 57 360 42 S420 49 500 15 L500 130 L0 130Z" fill="url(#g)"/><path d="M0 105 C55 95 65 104 100 83 S155 93 190 62 S240 75 275 54 S325 57 360 42 S420 49 500 15" fill="none" stroke="#2dbb95" stroke-width="4"/></svg></div>
+          <div class="dash-stats"><div class="mini"><small>Resultado acumulado</small><strong>€1.284,32</strong></div><div class="mini"><small>Procesos automatizados</small><strong>248</strong></div></div>
+          <p class="note">* Cifras mostradas únicamente como ejemplo visual. No representan ganancias garantizadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="light" id="beneficios">
+      <div class="container center"><div class="eyebrow">Una plataforma, muchas posibilidades</div><h2 class="section-title">Diseñada para ahorrar tiempo</h2><p class="section-sub">Automatiza tareas repetitivas y mantén el control sobre tus actividades digitales.</p>
+        <div class="cards">
+          <div class="card"><div class="icon">⚙️</div><h3>Automatización</h3><p>Configura flujos que se ejecutan de forma programada.</p></div>
+          <div class="card"><div class="icon">📈</div><h3>Métricas claras</h3><p>Consulta actividad, conversiones y resultados en un panel.</p></div>
+          <div class="card"><div class="icon">🔐</div><h3>Control y seguridad</h3><p>Gestiona tus configuraciones y accesos desde tu cuenta.</p></div>
+          <div class="card"><div class="icon">⏱️</div><h3>Ahorra tiempo</h3><p>Reduce trabajo manual con tareas recurrentes.</p></div>
+          <div class="card"><div class="icon">🌍</div><h3>Multidispositivo</h3><p>Accede desde ordenador, tablet o móvil.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como">
+      <div class="container center"><div class="eyebrow">Empieza en minutos</div><h2 class="section-title">¿Cómo funciona?</h2><p class="section-sub">Un flujo sencillo para organizar y automatizar tus procesos.</p>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><h3>Regístrate</h3><p>Crea tu cuenta y configura tu perfil.</p></div>
+          <div class="step"><div class="num">2</div><h3>Elige un flujo</h3><p>Selecciona las tareas que quieres automatizar.</p></div>
+          <div class="step"><div class="num">3</div><h3>Activa la automatización</h3><p>Define horarios, límites y condiciones.</p></div>
+          <div class="step"><div class="num">4</div><h3>Analiza resultados</h3><p>Revisa métricas y optimiza tus campañas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="light" id="calculadora">
+      <div class="container">
+        <div class="calculator">
+          <div><div class="eyebrow" style="color:#69e9c6">Simulador</div><h2>Calcula un escenario</h2><p>Prueba distintos niveles de actividad. El resultado es una estimación matemática de ejemplo, no una promesa de ingresos.</p></div>
+          <div class="calc-box">
+            <div class="field"><label><span>Horas automatizadas / semana</span><b id="hoursValue">10 h</b></label><input id="hours" type="range" min="1" max="40" value="10" oninput="calculate()"></div>
+            <div class="field"><label><span>Valor estimado por hora (€)</span><b id="rateValue">8 €</b></label><input id="rate" type="range" min="1" max="30" value="8" oninput="calculate()"></div>
+            <div class="result"><span>Escenario mensual</span><strong id="result">€346,40</strong><small>Estimación: horas × valor × 4,33 semanas.</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="planes" class="light">
+      <div class="container center">
+        <div class="eyebrow">Planes AutoIncome</div>
+        <h2 class="section-title">Elige tu plan</h2>
+        <p class="section-sub">Empieza con el plan que mejor encaje con tu actividad. El pago se realizará mediante tu botón de PayPal.</p>
+        <div class="cards" style="grid-template-columns:repeat(3,1fr);max-width:960px;margin:0 auto">
+          <div class="card">
+            <h3>Starter</h3><div style="font-size:34px;font-weight:900;margin:10px 0">9,90 €<small style="font-size:13px;color:#708096"> / mes</small></div>
+            <p>Acceso inicial a las herramientas de AutoIncome.</p>
+            <div style="margin-top:20px"><a class="btn btn-main" style="width:100%;justify-content:center" href="https://www.paypal.com/ncp/payment/T7ZJGDREEHFSS" target="_blank" rel="noopener">Pagar con PayPal</a></div>
+          </div>
+          <div class="card" style="border:2px solid #5277e9">
+            <div class="eyebrow">Más elegido</div><h3>Pro</h3><div style="font-size:34px;font-weight:900;margin:10px 0">19,90 €<small style="font-size:13px;color:#708096"> / mes</small></div>
+            <p>Más automatizaciones y funciones de seguimiento.</p>
+            <div style="margin-top:20px"><a class="btn btn-main" style="width:100%;justify-content:center" href="https://www.paypal.com/ncp/payment/T7ZJGDREEHFSS" target="_blank" rel="noopener">Pagar con PayPal</a></div>
+          </div>
+          <div class="card">
+            <h3>Business</h3><div style="font-size:34px;font-weight:900;margin:10px 0">49,90 €<small style="font-size:13px;color:#708096"> / mes</small></div>
+            <p>Más capacidad para usuarios y procesos.</p>
+            <div style="margin-top:20px"><a class="btn btn-main" style="width:100%;justify-content:center" href="https://www.paypal.com/ncp/payment/T7ZJGDREEHFSS" target="_blank" rel="noopener">Pagar con PayPal</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="paypal">
+      <div class="container center">
+        <div class="eyebrow">Pago seguro</div>
+        <h2 class="section-title">PayPal</h2>
+        <p class="section-sub">El pago se realiza mediante PayPal. Pulsa el botón para continuar con el pago.</p>
+        <div class="card" style="max-width:620px;margin:auto">
+          <p><b>Integración pendiente del botón PayPal</b></p>
+          <p class="note"><a class="btn btn-main" href="https://www.paypal.com/ncp/payment/T7ZJGDREEHFSS" target="_blank" rel="noopener" style="justify-content:center">Continuar al pago con PayPal →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container center"><div class="eyebrow">Preguntas frecuentes</div><h2 class="section-title">Antes de empezar</h2>
+        <div style="max-width:760px;margin:35px auto;text-align:left">
+          <details open class="card"><summary><b>¿Las ganancias están garantizadas?</b></summary><p>No. Los resultados dependen del modelo de negocio, actividad, mercado y otros factores. Las cifras de la página son demostrativas.</p></details>
+          <details class="card" style="margin-top:12px"><summary><b>¿Necesito experiencia?</b></summary><p>La interfaz está pensada para principiantes, aunque cualquier actividad de monetización requiere entender sus costes, riesgos y condiciones.</p></details>
+          <details class="card" style="margin-top:12px"><summary><b>¿Puedo usarlo desde el móvil?</b></summary><p>Sí. Esta web está diseñada para adaptarse a móvil, tablet y escritorio.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta"><div class="container cta-inner"><div><h2>Empieza a automatizar tu trabajo digital</h2><p>Crea una cuenta demo y explora el panel.</p></div><button class="btn btn-main" onclick="openModal('register')">Crear cuenta →</button></div></section>
+  </main>
+
+  <footer><div class="container"><div class="foot"><div><a class="brand" href="#"><div class="bot">🤖</div>Auto<span>Income</span></a><p>Automatización digital, simplificada.</p></div><div class="footlinks"><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a href="#faq">FAQ</a><a href="#">Privacidad</a></div></div><div class="copy">© 2026 AutoIncome · Demo de producto · Todos los derechos reservados.</div></div></footer>
+
+  <div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">Crear cuenta</h2><p id="modalText">Introduce tus datos para continuar.</p><label>Nombre</label><input id="name" placeholder="Tu nombre"><label>Email</label><input id="email" type="email" placeholder="tu@email.com"><button class="btn btn-main" style="width:100%;justify-content:center" onclick="submitForm()">Continuar</button><p class="note">La cuenta real se activará al conectar el backend de AutoIncome.</p></div></div>
+
+<script>
+function openModal(type){document.getElementById('modal').classList.add('open');document.getElementById('modalTitle').textContent=type==='login'?'Iniciar sesión':'Crear cuenta';document.getElementById('modalText').textContent=type==='login'?'Accede a tu panel de AutoIncome.':'Crea tu cuenta para acceder a AutoIncome.'}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function submitForm(){const n=document.getElementById('name').value||'Usuario';alert('¡Bienvenido/a, '+n+'! El formulario está preparado para conectarse al backend de AutoIncome.');closeModal()}
+function calculate(){const h=+document.getElementById('hours').value,r=+document.getElementById('rate').value;document.getElementById('hoursValue').textContent=h+' h';document.getElementById('rateValue').textContent=r+' €';document.getElementById('result').textContent='€'+(h*r*4.33).toFixed(2).replace('.',',')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()})
+</script>
+</body>
+</html>
